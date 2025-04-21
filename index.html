@@ -89,8 +89,20 @@
       letter-spacing: 20px;
       word-spacing: 40px;
     }
-
-    .dark-mode .output-display { background: #333; }
+    .output-small {
+      font-size: clamp(18px, 4vw, 36px);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+    .dark-mode .output-display,
+    .dark-mode .output-small {
+      background: #333;
+    }
 
     input, button {
       font-size: 18px;
@@ -170,7 +182,7 @@
     <h2>Alarm Clock</h2>
     <input type="time" id="alarmTimeInput" />
     <button onclick="setAlarm()">Set Alarm</button>
-    <div id="alarmStatus" class="output-display">No alarm set.</div>
+    <div id="alarmStatus" class="output-small">No alarm set.</div>
     <audio id="alarmAudio" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
   </div>
 
