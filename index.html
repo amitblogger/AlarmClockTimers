@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlarmClockTimers.com – Online Alarm, Timer, Clock & Stopwatch</title>
-  <meta name="description" content="Set alarm, countdown timers, and use stopwatch online with AlarmClockTimers.com. Free tools for focus, workouts, study, and productivity." />
+  <title>AlarmClockTimers</title>
+  <meta name="description" content="Use AlarmClockTimers for free online alarm clocks, countdown timers, and stopwatches to boost productivity and focus." />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -64,26 +64,28 @@
     .tool-section {
       display: none;
       padding: 30px 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
     }
     .tool-section.active { display: block; }
+
     .tool-section h2 {
-      font-size: 54px;
-      text-transform: uppercase;
+      font-size: 48px;
       text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     .output-display {
       font-size: 120px;
       font-family: 'Orbitron', monospace;
       text-align: center;
-      margin-top: 20px;
       background: #1a1a1a;
       color: #fff;
       padding: 30px;
       border-radius: 20px;
-      overflow-wrap: break-word;
+      overflow-x: auto;
+      white-space: nowrap;
       letter-spacing: 20px;
       word-spacing: 40px;
     }
@@ -96,6 +98,12 @@
       border-radius: 6px;
     }
 
+    .blog-article h3 {
+      cursor: pointer;
+      color: #004080;
+      margin: 20px 0 10px;
+    }
+
     footer {
       background: #222;
       color: #ccc;
@@ -103,7 +111,6 @@
       padding: 30px 10px;
       margin-top: 50px;
     }
-
     .footer-nav {
       display: flex;
       justify-content: center;
@@ -111,7 +118,6 @@
       gap: 12px;
       margin-bottom: 20px;
     }
-
     .footer-nav button {
       background: #333;
       color: #90cdf4;
@@ -120,7 +126,6 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     .footer-content {
       display: none;
       max-width: 800px;
@@ -131,86 +136,103 @@
       border-radius: 10px;
     }
     .footer-content.active { display: block; }
-
-    @media (max-width: 768px) {
-      .output-display {
-        font-size: 60px;
-        padding: 20px;
-        letter-spacing: 10px;
-        word-spacing: 20px;
-      }
-      .tool-section h2 { font-size: 36px; }
-      .top-nav button { padding: 8px 14px; font-size: 14px; }
-    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>⏰ AlarmClockTimers.com</h1>
+    <h1>⏰ AlarmClockTimers</h1>
     <div class="top-nav">
       <button class="btn-clock" onclick="showTool('clock')">Live Clock</button>
       <button class="btn-timer" onclick="showTool('timer')">Timer</button>
       <button class="btn-alarm" onclick="showTool('alarm')">Alarm</button>
       <button class="btn-stopwatch" onclick="showTool('stopwatch')">Stopwatch</button>
-      <button class="btn-blog" onclick="window.location.href='https://alarmclocktimers.blogspot.com/'">Blog</button>
+      <button class="btn-blog" onclick="showTool('blog')">Blog</button>
     </div>
     <div class="toggle-theme" onclick="toggleDarkMode()">Dark Mode</div>
   </header>
 
+  <!-- Clock -->
   <div id="clock" class="tool-section active">
-    <h2>LIVE CLOCK</h2>
+    <h2>Live Clock</h2>
     <div id="clockDisplay" class="output-display">Loading...</div>
   </div>
 
+  <!-- Timer -->
   <div id="timer" class="tool-section">
-    <h2>COUNTDOWN TIMER</h2>
+    <h2>Countdown Timer</h2>
     <input type="number" id="timerMinutes" placeholder="Minutes" />
     <input type="number" id="timerSeconds" placeholder="Seconds" />
     <button onclick="startTimer()">Start Timer</button>
     <div id="timerDisplay" class="output-display">00:00</div>
   </div>
 
+  <!-- Alarm -->
   <div id="alarm" class="tool-section">
-    <h2>ALARM CLOCK</h2>
+    <h2>Alarm Clock</h2>
     <input type="time" id="alarmTimeInput" />
     <button onclick="setAlarm()">Set Alarm</button>
     <div id="alarmStatus" class="output-display">No alarm set.</div>
     <audio id="alarmAudio" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
   </div>
 
+  <!-- Stopwatch -->
   <div id="stopwatch" class="tool-section">
-    <h2>STOPWATCH</h2>
+    <h2>Stopwatch</h2>
     <div id="stopwatchDisplay" class="output-display">00:00:00</div>
     <button onclick="startStopwatch()">Start</button>
     <button onclick="pauseStopwatch()">Pause</button>
     <button onclick="resetStopwatch()">Reset</button>
   </div>
 
+  <!-- Blog -->
+  <div id="blog" class="tool-section">
+    <h2>Blog</h2>
+
+    <div class="blog-article">
+      <h3 onclick="toggleArticle('article1')">1. Top 5 Benefits of Using an Online Alarm Clock ⏰</h3>
+      <div id="article1" style="display:none; padding:15px; background:#f0f8ff; border-radius:8px;">
+        <p><strong>Keywords:</strong> online alarm clock, wake up tools, free alarm apps, digital alarm, alarm timer online</p>
+        <p><strong>Online alarm clocks</strong> are transforming the way we wake up, schedule tasks, and stay on track. Here are 5 powerful reasons to switch to an online alarm:</p>
+        <ol>
+          <li><strong>Accessibility:</strong> Use from any browser—no downloads needed.</li>
+          <li><strong>Less Distractions:</strong> Avoid mobile apps and notifications.</li>
+          <li><strong>Storage Free:</strong> Saves device memory.</li>
+          <li><strong>Multiple Alarms:</strong> Schedule more than one timer.</li>
+          <li><strong>Custom Tones:</strong> Choose your favorite sound!</li>
+        </ol>
+        <p>Try it now on <strong>AlarmClockTimers</strong> to simplify your time routine!</p>
+      </div>
+    </div>
+
+    <div class="blog-article">
+      <h3 onclick="toggleArticle('article2')">2. Pomodoro Timer Technique – Boost Focus in 25 Minutes 🍅</h3>
+      <div id="article2" style="display:none; padding:15px; background:#fdf4e3; border-radius:8px;">
+        <p><strong>Keywords:</strong> pomodoro timer, focus timer, productivity, study techniques, time management</p>
+        <p>The <strong>Pomodoro Technique</strong> is a time system that improves focus using 25-minute work blocks:</p>
+        <ul>
+          <li>✅ Work for 25 minutes</li>
+          <li>⏸️ Take a 5-minute break</li>
+          <li>🔁 Repeat 4 cycles</li>
+          <li>🛌 Take a long break</li>
+        </ul>
+        <p>Try our <strong>Pomodoro timer</strong> on AlarmClockTimers to stay sharp!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-nav">
-      <button onclick="toggleFooter('privacy')">Privacy Policy</button>
+      <button onclick="toggleFooter('privacy')">Privacy</button>
       <button onclick="toggleFooter('terms')">Terms</button>
       <button onclick="toggleFooter('contact')">Contact</button>
       <button onclick="toggleFooter('copyright')">Copyright</button>
     </div>
-    <div id="privacy" class="footer-content">
-      <h3>Privacy Policy</h3>
-      <p>We do not collect personal data. All tools work in-browser without tracking.</p>
-    </div>
-    <div id="terms" class="footer-content">
-      <h3>Terms of Use</h3>
-      <p>Use our tools at your own discretion. We are not responsible for missed alerts or time issues.</p>
-    </div>
-    <div id="contact" class="footer-content">
-      <h3>Contact Us</h3>
-      <p>Email: support@alarmclocktimers.com</p>
-    </div>
-    <div id="copyright" class="footer-content">
-      <h3>Copyright</h3>
-      <p>&copy; 2025 AlarmClockTimers.com. All rights reserved.</p>
-    </div>
-    <p>&copy; 2025 AlarmClockTimers.com</p>
+    <div id="privacy" class="footer-content"><p>No data is collected. Fully browser-based experience.</p></div>
+    <div id="terms" class="footer-content"><p>Use responsibly. We do not store alarms or timers.</p></div>
+    <div id="contact" class="footer-content"><p>Email us at: support@alarmclocktimers.com</p></div>
+    <div id="copyright" class="footer-content"><p>&copy; 2025 AlarmClockTimers. All rights reserved.</p></div>
   </footer>
 
   <script>
@@ -224,6 +246,10 @@
     function toggleFooter(id) {
       document.querySelectorAll(".footer-content").forEach(el => el.classList.remove("active"));
       document.getElementById(id).classList.add("active");
+    }
+    function toggleArticle(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "none" ? "block" : "none";
     }
     function updateClock() {
       const now = new Date();
