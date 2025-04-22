@@ -7,54 +7,58 @@
   <meta name="description" content="Free online alarm clock, countdown timer, stopwatch & blog on AlarmClockTimers."/>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet"/>
   <style>
-    /* Global box sizing */
+    /* Box sizing reset */
     *, *::before, *::after { box-sizing: border-box; }
 
     body {
       margin: 0; padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f7f7f7; color: #222; line-height: 1.4;
+      background: #f7f7f7; color: #222;
+      line-height: 1.4;
     }
     .dark-mode { background: #111; color: #eee; }
 
     /* Header */
     header {
-      display: flex; flex-wrap: wrap;
-      justify-content: space-between; align-items: center;
-      background: #004080; padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #004080;
+      padding: 1rem;
       position: sticky; top: 0; z-index: 1000;
     }
     header h1 {
-      flex: 1 1 auto; margin: 0;
-      font-size: clamp(2.4rem, 10vw, 3.5rem);
+      margin: 0;
+      font-size: clamp(1.2rem, 5vw, 2rem);
       color: #fff;
     }
     .toggle-theme {
-      flex: 0 0 auto;
       background: #fff; color: #000;
       border: none; border-radius: .25rem;
-      padding: .75rem 1.5rem; cursor: pointer;
-      margin-left: 1rem;
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      padding: .5rem 1rem; cursor: pointer;
+      font-size: clamp(.75rem, 3vw, 1rem);
+      margin-top: .5rem;
     }
     .dark-mode .toggle-theme {
       background: #444; color: #fff;
     }
 
-    /* Top navigation (font-size reduced 30%) */
+    /* Top navigation (tabs) */
     .top-nav {
+      width: 100%;
       display: flex; flex-wrap: wrap;
-      justify-content: center; gap: .75rem;
-      flex: 1 1 100%; margin-top: .75rem;
+      justify-content: space-around;
+      gap: .5rem;
+      margin-top: 1rem;
     }
     .top-nav button {
       flex: 1 1 auto;
       border: none; border-radius: 1.5rem;
-      padding: 1.25rem 2rem;
-      font-size: clamp(1rem, 4vw, 1.4rem);
+      padding: .75rem 1.5rem;
+      font-size: clamp(.75rem, 3vw, 1rem);
       font-weight: bold; color: #fff;
-      text-align: center; cursor: pointer;
-      white-space: nowrap;
+      cursor: pointer; white-space: nowrap;
+      text-align: center;
     }
     .btn-clock     { background: #e63946; }
     .btn-timer     { background: #f4a261; }
@@ -64,23 +68,24 @@
 
     /* Tool sections */
     .tool-section {
-      display: none; width: 100%;
-      padding: 2rem 1rem; max-width: 900px; margin: auto;
+      display: none;
+      width: 100%; padding: 1.5rem 1rem;
+      max-width: 900px; margin: 2rem auto;
     }
     .tool-section.active { display: block; }
     .tool-section h2 {
-      font-size: clamp(3rem, 12vw, 6rem);
+      font-size: clamp(1.5rem, 6vw, 3rem);
       text-align: center; text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
-    /* Large digital displays */
+    /* Digital displays */
     .output-display {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(2rem, 10vw, 4.5rem);
+      font-size: clamp(1rem, 5vw, 2.5rem);
       text-align: center;
       background: #1a1a1a; color: #fff;
-      padding: clamp(1.5rem, 4vw, 2.5rem);
+      padding: clamp(.75rem, 3vw, 1.5rem);
       border-radius: 1rem;
       overflow-x: auto; white-space: nowrap;
       letter-spacing: 1rem; word-spacing: 2rem;
@@ -91,53 +96,53 @@
     /* Alarm status */
     .output-small-digital {
       font-family: 'Orbitron', monospace;
-      font-size: clamp(1rem, 4vw, 2rem);
+      font-size: clamp(.75rem, 3vw, 1.5rem);
       text-align: center;
       background: #1a1a1a; color: #fff;
-      padding: clamp(1rem, 3vw, 2rem);
+      padding: clamp(.5rem, 2vw, 1rem);
       border-radius: .75rem;
-      margin: 1.5rem auto;
-      white-space: nowrap; overflow-x: hidden;
+      margin: 1rem auto; white-space: nowrap;
+      overflow-x: hidden;
     }
     .dark-mode .output-small-digital { background: #333; }
 
-    /* Inputs & buttons */
+    /* Inputs & buttons inside tools */
     input, button {
-      font-size: clamp(1rem, 4vw, 2rem);
-      padding: .75rem 1.25rem; margin: .75rem .5rem;
+      font-size: clamp(.75rem, 3vw, 1.5rem);
+      padding: .75rem 1rem; margin: .5rem .25rem;
       border-radius: .5rem;
     }
 
     /* Blog headings */
     .blog-article h3 {
-      font-size: clamp(2rem, 8vw, 2.5rem);
+      font-size: clamp(1rem, 4vw, 1.5rem);
       cursor: pointer; color: #004080;
-      margin: 1.5rem 0 .75rem;
+      margin: 1rem 0 .5rem;
     }
 
     /* Footer */
     footer {
       background: #222; color: #ccc;
-      text-align: center; padding: 2rem 1rem; margin-top: 3rem;
+      text-align: center; padding: 1.5rem 1rem;
+      margin-top: 2rem;
     }
     .footer-nav {
       display: flex; flex-wrap: wrap;
-      justify-content: center; gap: .75rem;
-      margin-bottom: 1.5rem;
+      justify-content: center; gap: .5rem;
+      margin-bottom: 1rem;
     }
     .footer-nav button {
       flex: 1 1 auto;
       background: #333; color: #90cdf4;
       border: none; border-radius: .375rem;
-      padding: .75rem 1rem;
-      font-size: clamp(1rem, 4vw, 2rem);
-      cursor: pointer; text-align: center;
+      padding: .5rem .75rem;
+      font-size: clamp(.75rem, 3vw, 1rem);
+      cursor: pointer; white-space: nowrap;
     }
     .footer-content {
       display: none; background: #444; color: #fff;
       padding: 1rem; max-width: 800px;
-      margin: auto; border-radius: .5rem;
-      text-align: left;
+      margin: auto; border-radius: .5rem; text-align: left;
     }
     .footer-content.active { display: block; }
   </style>
@@ -160,8 +165,7 @@
     <h2>Live Clock</h2>
     <div id="clockDisplay" class="output-display">Loading…</div>
   </div>
-
-  <!-- Timer -->
+  <!-- Countdown Timer -->
   <div id="timer" class="tool-section">
     <h2>Countdown Timer</h2>
     <input type="number" id="timerMinutes" placeholder="Minutes"/>
@@ -169,8 +173,7 @@
     <button onclick="startTimer()">Start</button>
     <div id="timerDisplay" class="output-display">00:00</div>
   </div>
-
-  <!-- Alarm -->
+  <!-- Alarm Clock -->
   <div id="alarm" class="tool-section">
     <h2>Alarm Clock</h2>
     <input type="time" id="alarmTimeInput"/>
@@ -178,7 +181,6 @@
     <div id="alarmStatus" class="output-small-digital">No alarm set.</div>
     <audio id="alarmAudio" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
   </div>
-
   <!-- Stopwatch -->
   <div id="stopwatch" class="tool-section">
     <h2>Stopwatch</h2>
@@ -187,7 +189,6 @@
     <button onclick="pauseStopwatch()">Pause</button>
     <button onclick="resetStopwatch()">Reset</button>
   </div>
-
   <!-- Blog -->
   <div id="blog" class="tool-section">
     <h2>Blog</h2>
@@ -206,25 +207,24 @@
       </div>
     </div>
   </div>
-
   <!-- Footer -->
   <footer>
     <div class="footer-nav">
       <button onclick="toggleFooter('privacy')">Privacy Policy</button>
       <button onclick="toggleFooter('terms')">Terms of Use</button>
-      <button onclick="toggleFooter('contact')">Contact Us</button>
+      <button onclick="toggleFooter('contact')">Contact Us</button>
       <button onclick="toggleFooter('copyright')">Copyright</button>
     </div>
     <div id="privacy" class="footer-content">
       <h3>Privacy Policy</h3>
-      <p>No personal data is collected; everything runs in your browser.</p>
+      <p>No personal data collected; all tools run client‑side.</p>
     </div>
     <div id="terms" class="footer-content">
       <h3>Terms of Use</h3>
-      <p>Use responsibly; we are not liable for missed alarms or timings.</p>
+      <p>Use responsibly; not liable for missed alarms.</p>
     </div>
     <div id="contact" class="footer-content">
-      <h3>Contact Us</h3>
+      <h3>Contact Us</h3>
       <p>Email: support@alarmclocktimers.com</p>
     </div>
     <div id="copyright" class="footer-content">
@@ -268,8 +268,8 @@
           alert("Time's up!");
         } else {
           t--;
-          const mm = String(Math.floor(t / 60)).padStart(2,'0');
-          const ss = String(t % 60).padStart(2,'0');
+          const mm = String(Math.floor(t/60)).padStart(2,'0');
+          const ss = String(t%60).padStart(2,'0');
           document.getElementById('timerDisplay').textContent = mm + ':' + ss;
         }
       }, 1000);
@@ -291,21 +291,21 @@
     }, 1000);
     // Stopwatch
     let stopwatchInterval, stopwatchTime = 0;
-    function updateStopwatchDisplay(){
+    function updateStopwatchDisplay() {
       const h = String(Math.floor(stopwatchTime/3600)).padStart(2,'0');
       const m = String(Math.floor((stopwatchTime%3600)/60)).padStart(2,'0');
       const s = String(stopwatchTime%60).padStart(2,'0');
       document.getElementById('stopwatchDisplay').textContent = h + ':' + m + ':' + s;
     }
-    function startStopwatch(){
+    function startStopwatch() {
       clearInterval(stopwatchInterval);
-      stopwatchInterval = setInterval(()=>{
+      stopwatchInterval = setInterval(() => {
         stopwatchTime++;
         updateStopwatchDisplay();
-      },1000);
+      }, 1000);
     }
-    function pauseStopwatch(){ clearInterval(stopwatchInterval); }
-    function resetStopwatch(){ clearInterval(stopwatchInterval); stopwatchTime = 0; updateStopwatchDisplay(); }
+    function pauseStopwatch() { clearInterval(stopwatchInterval); }
+    function resetStopwatch() { clearInterval(stopwatchInterval); stopwatchTime = 0; updateStopwatchDisplay(); }
   </script>
 </body>
 </html>
